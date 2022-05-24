@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PENGUNDIAN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+      body{
+        background-color: #fff;
+        font-family: 'Raleway', sans-serif;
+        background-image: url(bg.jpg);
+        background-position: center top;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      
+      .text-box , .text-box2 {
+        color: #000;
+        font-size: 2.0em;
+        font-weight: 700;
+      }
+
+      .text-box2{
+        margin-top: 30px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <main class="p-5" style="height: 90vh;">
+        <div class="container d-flex h-100" >
+          <div class="row justify-content-center align-self-center text-center" style="width:100%;">
+           <div class="col-md-10 text-box">Motion</div>
+           <div class="col-md-10 text-box2">Challenge</div>
+          </div>
+      </div>
+      <audio id="audio" loop>
+        <source src="kring2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      
+    </main>
+
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        start = 0;
+        //sudah = [] ;
+        if(localStorage.getItem('sudah') === null){
+          sudah = [];
+        }else{
+          sudah = localStorage.getItem('sudah');
+          sudah = JSON.parse(sudah);
+        }
+        
+        localStorage.setItem('sudah', JSON.stringify(sudah));
+
+        var text_ar = [
+        ['Kasus korupsi di Indonesia perlu diberikan sanksi hukuman mati','Corruption cases in Indonesia need to be sentenced to death'],
+        ['Mata uang kripto seperti bitcoin dan ethereum seharusnya dimusnahkan','Crypto currency which is not limited to bitcoin, and etherium needs to be abolished'],
+        ['Semua orang harus menjadi vegetarian','All people should become vegetarian'],
+        ['Perubahan iklim tidak dapat dihentikan','Climate change is unstoppable'],
+        ['Kampanye "body positivity" pada kontes kecantikan yang membenarkan ukuran tubuh plus-sized, kelebihan berat badan, dan kekurangan berat badan layak untuk dirayakan sebagai bentuk dari penerimaan diri sendiri yang sejati.','Body positivity movement in beauty pageant which justifies being plus sized, overweight, and underweight needs to be celebrated as embracing our true self.'],
+        ['Individu atau kelompok yang dengan sengaja mengeksploitasi kemalangan orang lain misalnya tetapi tidak terbatas pada situasi keuangan, status sosial, atau kondisi mereka untuk mendapatkan viewers atau interaksi di sosial media layak untuk dipanggil dan dipermalukan di depan umum.','Individuals or group who intentionally exploited the misfortunes of others for example but not limited to their financial situation, social status, or condition in order to gain viewers or engagement deserve to be called out and publicly shamed'],
+        ['Pemerintah Indonesia akan memperbolehkan mantan koruptor mencalonkan diri dalam pemilihan legislatif setelah terbukti bersih','The Indonesian Government may let ex-corruptor from running legislative election once they have proven clean'],
+        ['Diskusi pembahasan pada G20 haruslah mengedepankan isu-isu terkait perdamaian dari pada transformasi ekonomi','Discussion at G20 needs to focus more on peace rather than Economic transformation '],
+        ['Pemerintah Indonesia harus memberikan pajak yang lebih rendah untuk perusahaan startup Unicorn asli Indonesia','The Indonesian Government must give a lower taxes for Indonesian Unicorn startups company'],
+        ['Radikalisme dan terorisme terjadi akibat minimnya pengetahuan terkait keagamaan dan spiritual','Radicalism and terrorism happened due to the lack of religious and spiritual knowledge'],
+        ['Kemenparekraf harus mengedepankan aspek Sustainable Tourism dalam mempromosikan 10 proyek Bali Baru','The ministry of tourism and creative economy must prioritize the aspects of Sustainable Tourism in promoting 10 New Bali projects'],
+        ['Masyarakat seharusnya tidak pernah mengkritik gaya pengasuhan seorang ibu kecuali jika itu jelas-jelas kasar dan lalai','Society should never critique a mother’s parenting style except where it is obviously abusive and neglectful'],
+        ['Tujuan Pembangunan Berkelanjutan akan tercapai pada tahun 2030','Sustainable Development Goals will be achieved by 2030'],
+        ['Peserta kontes kecantikan boleh memiliki pilihan untuk tidak melanjutkan advokasi mereka setelah mereka menyelesaikan masa jabatan mereka','Beauty pageant participants may have a choice to discontinue their advocacy once they have finished their reign'],
+        ['Hewan seharusnya diberikan hak asasi seperti layaknya manusia','Animals should be granted rights like humans'],
+        ['Penindas (Bully) di media sosial pantas mendapatkan hukuman penjara seumur hidup','Social media bullies deserve a life imprisonment sentence'],
+        ['Keahlian bahasa Inggris tingkat mahir perlu menjadi prasyarat untuk mengikuti sebuah kontes kecantikan','An advanced English language skill needs to become a prerequisite to join beauty pageant contests.'],
+        ['Semua sekolah perlu memprioritaskan mempromosikan pembelajaran digital dan literasi daripada pembelajaran  konvensional','All schools need to prioritize promoting digital learning and literacy over conventional learning '],
+        ['Bahkan penjahat paling jahat pun pantas mendapatkan cinta dan penerimaan','Even the worst criminal deserves love and acceptance '],
+        ['Operasi plastik seharusnya menjadi pilihan yang dapat diakses oleh pria dan wanita ketika mengikuti kontes kecantikan','Plastic surgery should be made an accessible choice for both male and female in joining beauty pageant contests'],
+        ['Kebahagiaan berarti memiliki kesuksesan karir dan gelar tinggi dalam pendidikan','Happiness means having career success and a high degree in education'],
+        ['Manusia tidak harus berkewajiban untuk memperbaiki diri','Human beings should not be obligated to better themselves'],
+        ['Inti dari menjadi wanita sejati adalah ketika seorang wanita menjadi seorang ibu','The essence of being a true woman is when a female becomes a mother'],
+        ['Hal terpenting dalam hidup adalah mengejar kesuksesan dan pencapaian besar','The most important thing in life is to chase after success and big achievements'],
+        ['Kehidupan yang indah ditunjukkan dengan tujuan dan tujuan yang jelas','A beautiful life is indicated by clear goals and purposes'],
+        ['Perkembangan dunia digital dan media sosial telah membawa kita ke era dimana orang berenpati namun tanpa aksi','The development of the digital world and social media has brought us to an era where people are emphatic but have no action '],
+        ['Spiritualitas adalah sumber kebahagiaan sejati','Spirituality is the source of true happiness'],
+        ['Sistem pendidikan Indonesia perlu berinvestasi lebih banyak dalam penelitian dan pemberian beasiswa untuk pendidikan dan ilmu lingkungan guna mempromosikan ekonomi yang lebih hijau','The Indonesian education system needs to invest more in research initiatives and student scholarships for environmental courses to promote a green economy'],
+        ['Direktur perusahaan multinasional bertanggung jawab secara personal dan layak mendapatkan hukuman yang berat apabila terbukti melakukan pelanggaran atas lingkungan yang dilakukan oleh perusahaan mereka di negara negara berkembang','Directors of multinational companies are personally liable and deserved to be punished heaviy for the environmental abuses committed by their companies in the developing world'],
+        ['Gerakan Feminist harus menolak keras komersalisasi reproduksi (misalnya penjualan sel telur)','The feminist movement should oppose the commercialisation of reproduction (e.g. sale of ova, commercial surrogacy)'],
+        ['Kemenkominfo harus memprioritaskan usaha kecil yang menggalakkan green manufacturing untuk onboard di Garnas BBI (Gerakan Nasional Bangga Buatan Indonesia)','The Ministry of Communication and information must prioritize small businesses that promote green manufacturing to onboard in Garnas BBI (Gerakan Nasional Bangga Buatan Indonesia)'],
+        ['Lebih baik single/sendiri dari pada membina hubungan yang sukses dengan monogami ','it is preferable to be single, than pursuing a successful long-term monogamous relationship'],
+        ['Cerita dongeng klasik haruslah ditulis ulang untuk membenarkan isu terkait stereotip gender','The classic children fairy tale should be rewritten with the aim of correcting gender stereotypes'],
+        ['Kementerian ekonomi kreatif dan pariwisata perlu berinvestasi besar-besaran dalam pariwisata berbasis augmented reality untuk menopang sektor pariwisata selama pandemi COVID-19','The ministry of the creative economy and tourism needs to massively invest in augmented reality-based tourism in order to sustain the tourism sector during the COVID-19 pandemic'],
+        ['Orang yang dengan sengaja meninggalkan program karantina mandiri dalam alasan dan peran apapun  berhak mendapatkan hukuman berat misalnya namun tidak terbatas pada denda berat dan penjara','People who intentionally leave the self-quarantine program no matter the spesific rreason and role are entitled to severe punishment for example but not limited to heavy fines and imprisonment'],
+        ['Pemerintah Indonesia perlu memberikan lebih banyak kuota bagi politisi perempuan di parlemen','The Indonesian government needs to give more quotas for female politicians in the parliaments'],
+        ['Keberadaan industri berbasis disabilitas membawa lebih banyak dampak buruk daripada manfaat bagi penyandang disabilitas','The existence of a disabled-based industry brings more harm than good to disabled people'],
+        ['Setiap wanita seharusnya memiliki pilihan untuk menggugurkan kehamilan mereka (aborsi)','Every women should be given the choice to abort their pregnancy'],
+        ['Kementerian Ketenagakerjaan (Indonesia) harus mewajibkan pemberian jaminan kesehatan jiwa bagi seluruh pegawai','The ministry of manpower (Indonesia) should make the grant of mental health insurance compulsory for all employees'],
+        ['Media sosial perlu segera berinvestasi dalam Kecerdasan Buatan yang dapat mendeteksi gambar yang diedit berlebihan seperti foto personal atau pemandangan','Social media needs to urgently invest in Artificial Intelligence that can detect heavily edited pictures for example but not limited to personal photos and landscape '],
+        ['Adanya standar kecantikan media sosial membawa lebih banyak kebaikan daripada bahaya','The existence of social media beauty standards brings more good than harm'],
+        ['Sistem keamanan dan hukum Indonesia perlu menerapkan secara tegas kebijakan dan regulasi di bawah perilaku kejahatan dunia maya','The Indonesian security system and the law need to strictly implement the policy and regulation under cybercrime conduct'],
+        ['Sistem pendidikan Indonesia perlu banyak berinvestasi dalam augmented reality yang mendukung pengalaman belajar siswa','The Indonesian education system needs to heavily invest in augmented reality which supports students’ learning experience'],
+        ['Sistem pendidikan dasar Indonesia harus memungkinkan siswa untuk memilih preferensi mata pelajaran mereka','The Indonesian primary education system must allow students to choose their subject preferences'],
+        ['Kartu Identitas Penduduk (ID Card/KTP) Harus menjadi syaat wajib untuk dapat menggunakan sosial media','Identity Card Number is pre-requisite item to use Social Media '],
+
+        ];
+
+        //console.log();
+
+        //$("#ModalAwal").modal('show');
+        //const myModal = new bootstrap.Modal(document.getElementById('ModalAwal'))
+
+        function rendem()
+        {
+            var numb_t = text_ar.length;
+            //var ra = Math.floor(Math.random() * numb_t) + 1;
+            var ra = Math.floor(Math.random() * numb_t);
+            console.log(ra);
+            $('.text-box').html(text_ar[ra][0]);
+            $('.text-box2').html(text_ar[ra][1]);
+           
+            //console.log(numb_t);
+            //console.log(text[ra]);
+        }
+
+        function setselected(){
+            var numb_t = text_ar.length;
+            var ra = 0;
+            let i = 1 ; 
+            $('.text-box').html("");
+            $('.text-box2').html("");
+
+            do {
+              ra = Math.floor(Math.random() * numb_t);
+              console.log(sudah.includes(text_ar[ra][0]));
+              console.log("putaran "+ i);
+              console.log("index "+ ra);
+              i += 1;
+            }
+            while (sudah.includes(text_ar[ra][0]));
+
+            clearInterval(ran);
+            $('.text-box').html(text_ar[ra][0]);
+            $('.text-box2').html(text_ar[ra][1]);
+
+            sudah = localStorage.getItem('sudah');
+            sudah = JSON.parse(sudah);
+            sudah.push(text_ar[ra][0]);
+            localStorage.setItem('sudah', JSON.stringify(sudah));
+
+
+        }
+
+        $('body').keyup(function(e){
+
+            console.log(e.keyCode)
+
+            if(e.keyCode == 32){
+                if(start == 0){
+                    start = 1;
+                    console.log('start')
+                    if(sudah.length < text_ar.length){
+                      ran=setInterval(rendem,100);
+                      document.getElementById('audio').play();
+                    }else{
+                      alert('Maaf data Pertanyaan sudah Habis');
+                      start = 0;
+                    }
+                }else{
+                    start = 0;
+                    //$('#stop').attr('disabled','disabled');
+                    
+                    setselected();
+                    document.getElementById('audio').pause();
+                    
+                }
+            }
+
+            if(e.keyCode == 67){
+              let text = "Apakah Anda Yakin Ingin Membersihkan data ?";
+              if (confirm(text) == true) {
+                localStorage.clear();
+                sudah = [];
+                localStorage.setItem('sudah', JSON.stringify(sudah));
+                alert('Data Berhasil Di bersihkan !')
+              }
+            }
+
+          });
+        
+
+    </script>
+  </body>
+</html>
